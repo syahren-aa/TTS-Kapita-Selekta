@@ -1,0 +1,58 @@
+<div th:fragment="occupationTable">
+     <table th:object="${occupation}" class="table ">
+                 <tr>
+                    <td><h3>Current Occupation</h3></td>
+                    <td><a class="btn btn-primary" data-toggle="modal" data-target="#updateOcc">Update</a></td>
+                </tr>
+                <tr>
+                    <td>CurrentCompany</td>
+                    <td th:text="${occupation.currentCompany}"></td>
+                </tr>
+                <tr>
+                    <td>job</td>
+                    <td th:text="${occupation.job}"></td>
+                </tr>
+                <tr>
+                    <td>website</td>
+                    <td th:text="${occupation.website}"></td>
+                </tr>
+               
+            </table>
+</div>
+
+<div th:fragment="occupationUpdate">
+       <div class="modal fade" id="updateOcc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+    <form th:object="${occupation}" th:action="@{save/occupation}" method="POST">
+    <table class="table">
+                <tr>
+                    <td><input type="hidden" th:field="*{id}" readonly=""></td>
+                </tr>
+                <tr>
+                    <td>Current Company</td>
+                    <td><input type="text" th:field="*{currentCompany}"></td>
+                </tr>
+                <tr>
+                    <td>Job</td>
+                    <td><input type="text" th:field="*{job}"></td>
+                </tr>
+                <tr>
+                    <td>Website</td>
+                    <td><input type="text" th:field="*{website}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Save" name="action"></td>
+                </tr>
+            </table>
+</form>
+                </div>
+            </div>
+       </div>
+</div>

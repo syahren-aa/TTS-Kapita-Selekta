@@ -1,0 +1,75 @@
+<div th:fragment="addressTable">
+    <table th:object="${address}" class="table ">
+                  <tr>
+                    <td><h3>Address</h3></td>
+                    <td><a class="btn btn-primary" data-toggle="modal" data-target="#updateAddress">Update</a></td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td th:text="${address.city}"></td>
+                </tr>
+                <tr>
+                    <td>Province</td>
+                    <td th:text="${address.province}"></td>
+                </tr>
+                <tr>
+                    <td>Street1</td>
+                    <td th:text="${address.street1}"></td>
+                </tr>
+                <tr>
+                    <td>Street2</td>
+                    <td th:text="${address.street2}"></td>
+                </tr>
+                <tr>
+                    <td>ZipCode</td>
+                    <td th:text="${address.zipCode}"></td>
+                </tr>
+            </table>
+
+</div>
+
+<div th:fragment="addressUpdate">
+       <div class="modal fade" id="updateAddress" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+    <form th:object="${address}" th:action="@{save/address}" method="POST">
+    <table class="table">
+                <tr>
+                    <td><input type="hidden" th:field="*{id}" readonly=""></td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td><input type="text" th:field="*{city}"></td>
+                </tr>
+                <tr>
+                    <td>Province</td>
+                    <td><input type="text" th:field="*{province}"></td>
+                </tr>
+                <tr>
+                    <td>Street1</td>
+                    <td><input type="text" th:field="*{street1}"></td>
+                </tr>
+                <tr>
+                    <td>Street2</td>
+                    <td><input type="text" th:field="*{street2}"></td>
+                </tr>
+                <tr>
+                    <td>ZipCode</td>
+                    <td><input type="text" th:field="*{zipCode}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Save" name="action"></td>
+                </tr>
+            </table>
+</form>
+                </div>
+            </div>
+       </div>
+</div>
+
