@@ -57,8 +57,12 @@ public class RestController {
     
     @PostMapping("login")
     public String login(LoginInput input){
+        if(service.Status(input).equalsIgnoreCase("verified")){
         idProfil = service.GetId(input);
-        return "redirect:/dataUser";
+        return "redirect:/dataUser";   
+        }else{
+        return "redirect:/login";
+        }
     }
     
     @GetMapping("dataUser")

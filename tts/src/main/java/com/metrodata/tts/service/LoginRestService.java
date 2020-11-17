@@ -27,6 +27,8 @@ public class LoginRestService {
     @Value("${api.uri}")
     private String uri;
    
+    int kode;
+    
     public LoginOutput login(LoginInput input){
         HttpEntity<LoginInput> request = new HttpEntity<>(input, null);
         ResponseEntity<LoginOutput> responseEntity = restTemplate.exchange("http://116.254.101.228:8080/ma_test/login",
@@ -35,6 +37,7 @@ public class LoginRestService {
                 new ParameterizedTypeReference<LoginOutput>(){
                 }
         );
+        kode=responseEntity.getStatusCodeValue();
         return responseEntity.getBody();
     }
 
@@ -42,6 +45,8 @@ public class LoginRestService {
         return login(input).getUser().getId();
     }
     
-  
+    public String Status(LoginInput input){
+        return login(input).getStatus();
+    }
     
 }
