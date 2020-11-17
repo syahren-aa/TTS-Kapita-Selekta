@@ -1,0 +1,65 @@
+<div th:fragment="contactTable">
+<table th:object="${contact}" class="table ">
+                  <tr>
+                    <td><h3>Contact</h3></td>
+                    <td><a class="btn btn-primary" data-toggle="modal" data-target="#updateContact">Update</a></td>
+                </tr>
+                <tr>
+                    <td>Facebook</td>
+                    <td th:text="${contact.facebook}"></td>
+                </tr>
+                <tr>
+                    <td>Instagram</td>
+                    <td th:text="${contact.instagram}"></td>
+                </tr>
+                <tr>
+                    <td>Linkedin</td>
+                    <td th:text="${contact.linkedin}"></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td th:text="${contact.phone}"></td>
+                </tr>
+            </table>
+    </div>
+
+<div th:fragment="contactUpdate">
+    <div class="modal fade" id="updateContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+    <form th:object="${contact}" th:action="@{save/contact}" method="POST">
+    <table class="table">
+                <tr>
+                    <td><input type="hidden" th:field="*{id}" readonly=""></td>
+                </tr>
+                <tr>
+                    <td>Facebook</td>
+                    <td><input type="text" th:field="*{facebook}"></td>
+                </tr>
+                <tr>
+                    <td>Instagram</td>
+                    <td><input type="text" th:field="*{instagram}"></td>
+                </tr>
+                <tr>
+                    <td>Linkedin</td>
+                    <td><input type="text" th:field="*{linkedin}"></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td><input type="text" th:field="*{phone}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Save" name="action"></td>
+                </tr>
+            </table>
+    </form>
+  </div>
+</div>
+    </div>
+</div>
