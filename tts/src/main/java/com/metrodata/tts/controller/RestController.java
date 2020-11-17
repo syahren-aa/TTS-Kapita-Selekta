@@ -46,8 +46,12 @@ public class RestController {
     
     @PostMapping("register")
     public String registerDaftar(RegisterDataInput input){
+        try{
         serviceRegister.register(input);
         return "redirect:/";
+        }catch(Exception e){
+            return "redirect:/";
+        }
     }
     
     @GetMapping("login")
@@ -58,7 +62,7 @@ public class RestController {
     
     @PostMapping("login")
     public String login(LoginInput input){
-        if(service.Status(input).equalsIgnoreCase("verified")){
+        if(service.Status(input).equalsIgnoreCase("Verified")){
         idProfil = service.GetId(input);
         return "redirect:/dataUser";   
         }else{
@@ -66,8 +70,16 @@ public class RestController {
         }
     }
     
+    @GetMapping("/logout")
+    public String logout(Model model){
+        service.logout();
+        return "redirect:/";
+    }
+    
     @GetMapping("dataUser")
     public String tampil(Model model){
+        idProfil = serviceUser.getUserId();
+        System.out.println(idProfil);
         model.addAttribute("user",serviceUser.getById(idProfil));
         model.addAttribute("address",serviceUser.getAddressById(idProfil));
         model.addAttribute("contact",serviceUser.getContactById(idProfil));

@@ -6,6 +6,7 @@
 package com.metrodata.tts.service;
 
 import com.metrodata.tts.entities.*;
+import com.metrodata.tts.entities.rest.LoginOutput;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -121,6 +124,12 @@ public class UserRestService {
         }catch(Exception e){
             return false;
         }
+    }
+    
+    public String getUserId(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        LoginOutput data = (LoginOutput)authentication.getPrincipal();
+        return data.getUser().getId();
     }
 
 }
