@@ -40,6 +40,7 @@ public class RestController {
     @GetMapping("register")
     public String register(Model model){
         model.addAttribute("register", new RegisterDataInput());
+        model.addAttribute("university", serviceUser.getUniversity());
         return "register";
     }
     

@@ -15,7 +15,8 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" data-th-href="@{/css/style.css}" />
     </head>
     <body>
-        <h1 class="h1reg">Register</h1>
+        <div class="header sticky-top">
+        <h2 class="h1reg">Register</h2></div>
         <div class="card">    
          <form th:object="${register}" th:action="@{register}" method="POST">
              <table class="table"><tr><td><label>Birth Date</label><input type="text" th:field="*{birthDate}" placeholder="Birth Date (yyyy-mm-dd)" required/></td></tr>
@@ -32,9 +33,11 @@ and open the template in the editor.
                  <tr><td><label>Password</label><input type="password" th:field="*{password}" placeholder="Password" required/></td></tr>
                  <tr><td><label>Phone</label><input type="text" th:field="*{phone}" placeholder="Phone" required/></td></tr>
                  <tr><td><label>Status</label><input type="text" th:field="*{status}" placeholder="Status" required/></td></tr>
-                 <tr><td><label>University</label><input type="text" th:field="*{university}" placeholder="University" required/></td></tr>
+                 <tr><td><label>University</label>  <select>
+                     <option th:each="as:${university}" th:value="${as.name}" th:text="${as.name}"></option>
+                    </select></td></tr>
                  <tr><td><label>Username</label><input type="text" th:field="*{username}" placeholder="Username" required/></td></tr>
-                 <tr><td><a th:href="@{login}" class="reg btn btn-danger">Cancel</a><input type="submit" class="reg btn btn-primary" value="register" name="action"/></td></tr>
+                 <tr><td><a th:href="@{login}" class="reg btn btn-dangers" style="background: red; color: white">Cancel</a><input type="submit" class="reg btn btn-primary" value="register" name="action"/></td></tr>
          </table>
          </form>
         </div>

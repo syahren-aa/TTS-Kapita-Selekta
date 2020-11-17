@@ -19,17 +19,22 @@
     width: 60%;
 }
 
-h1{
+.header{
+    padding: 2px;
+    margin: 0;
+    background-color: darkslategray;
+    box-shadow: 0 1px 2px 0 black;
+}
+
+h2{
     color: white;
     text-align: center;
-    margin: auto;
     margin-bottom: 10px;
-    margin-top: 5%;
 }
 
 
 .h1reg{
-    margin-top: 2%;
+    margin-top: 4px;
 }
 
 select{
@@ -39,8 +44,7 @@ select{
 body{
 padding-bottom:13.3%;
 height: 100%;
-background: rgb(2,0,36);
-background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(7,59,154,1) 0%, rgba(9,9,121,1) 0%, rgba(114,237,188,1) 0%, rgba(0,212,255,1) 100%, rgba(7,43,143,1) 100%, rgba(4,118,193,1) 100%);
+background: rgb(100,192,236);
 background-size: cover;
 }
 
@@ -69,7 +73,9 @@ input,a{
 }
 
 .btn-danger{
-    margin: auto;
+    margin: 9px;
+    position: absolute;
+    width: 10%;
 }
 
 .tableName{

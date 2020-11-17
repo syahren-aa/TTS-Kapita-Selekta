@@ -7,9 +7,13 @@ package com.metrodata.tts.service;
 
 import com.metrodata.tts.entities.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -45,6 +49,18 @@ public class UserRestService {
         result = restTemplate.getForObject(uri+"/profile/currentoccupation/{id}", CurrentOccupationData.class, param);
         return result;
     }
+    
+    public List<University> getUniversity(){
+        List<University> result;
+        ResponseEntity<List<University>> response = restTemplate.exchange(
+                uri+"/get/universities",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<University>>(){});
+        result = response.getBody();
+        return result;
+    }
+    
     
     public Contact getContactById(String id){
         Contact result;

@@ -28,7 +28,6 @@ public class LoginRestService {
     private String uri;
    
     int kode;
-    
     public LoginOutput login(LoginInput input){
         HttpEntity<LoginInput> request = new HttpEntity<>(input, null);
         ResponseEntity<LoginOutput> responseEntity = restTemplate.exchange("http://116.254.101.228:8080/ma_test/login",
@@ -48,5 +47,5 @@ public class LoginRestService {
     public String Status(LoginInput input){
         return login(input).getStatus();
     }
-    
+   
 }
